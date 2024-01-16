@@ -6,7 +6,7 @@
 #    By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 14:26:01 by mmughedd          #+#    #+#              #
-#    Updated: 2024/01/08 13:29:59 by mmughedd         ###   ########.fr        #
+#    Updated: 2024/01/16 13:05:11 by mmughedd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -24,6 +24,12 @@ MLX_NAME = libmlx_Linux.a
 
 MLX	= $(MLX_PATH)$(MLX_NAME)
 
+LIBFT_PATH = libft/
+
+LIBFT_NAME = libft.a
+
+LIBFT = $(LIBFT_PATH)$(LIBFT_NAME)
+
 SRCS = $(addprefix $(SRC_PATH), $(SRC)) $(addprefix $(UTILS_PATH), $(UTILS))
 
 INCS = -I./includes/ -I/usr/include -Imlx #-I ./minilibx-linux/
@@ -34,7 +40,6 @@ NAME = fractol
 
 CC = cc
 
-#FLAGS = -Wextra -Werror -lm -L$(MLX_PATH) -lmlx -lXext -lX11
 FLAGS = #-Wextra -Werror -Wall
 
 MLX_FLAGS = -Lminilibx-linux/ -lmlx -L/usr/lib/X11 -lXext -lX11
@@ -49,16 +54,19 @@ all: $(NAME)
 makemlx:
 	make -sC $(MLX_PATH)
 
-$(NAME): makemlx $(OBJS)
-	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX) $(INCS) $(MLX_FLAGS)
+makelibft:
+	make -sC $(LIBFT_PATH)
 
+$(NAME): makemlx makelibft $(OBJS)
+	$(CC) $(FLAGS) -o $(NAME) $(OBJS) $(MLX) $(LIBFT) $(INCS) $(MLX_FLAGS)
 
 clean:
 	$(RM) $(OBJS)
-	cd $(MLX_DIR) && make clean
+	make clean -C $(LIBFT_PATH)
 
 fclean: clean
 	$(RM) $(NAME)
+	make fclean -C $(LIBFT_PATH)
 
 re: fclean all
 

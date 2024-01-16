@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:25:58 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/08 16:12:17 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/16 14:03:09 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -19,15 +19,33 @@
 
 # include <stdlib.h>
 # include "../minilibx-linux/mlx.h"
+# include "../libft/libft.h"
+# include <math.h>
 # include <X11/keysym.h>
-# include <stdio.h>//to delete
+# include <stdio.h>// TODO: delete
 
-
-typedef struct s_mlx_data
+typedef struct s_data
 {
-	void	*mlx_ptr;
-	void	*win_ptr;
-}	t_mlx_data;
+	void	*img;
+	char	*addr;
+	int		bits_per_pixel;
+	int		endian;
+	int		line_len;
+}	t_data;
+
+typedef struct	s_fract {
+	void	*mlx;
+	void	*win;
+	t_data	img;
+}	t_fract;
 
 
+// typedef struct s_mlx_data
+// {
+// 	void	*mlx;
+// 	void	*win;
+// 	t_data	img;
+// 	int		colour;
+
+// }	t_mlx_data;
 #endif
