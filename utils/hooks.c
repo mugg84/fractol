@@ -1,36 +1,30 @@
 /* ************************************************************************** */
 /*                                                                            */
 /*                                                        :::      ::::::::   */
-/*   main.c                                             :+:      :+:    :+:   */
+/*   hooks.c                                            :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
-/*   Created: 2024/01/05 14:25:55 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/17 14:05:36 by mmughedd         ###   ########.fr       */
+/*   Created: 2024/01/17 13:53:53 by mmughedd          #+#    #+#             */
+/*   Updated: 2024/01/17 14:05:39 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../includes/fractol.h"
 
-int	main(int argc, char *argv[])
+int	close_win(int keycode, t_fract *fract)
 {
-	t_fract	fract;
-
-	if (argc == 2 && (!ft_strncmp("mandelbrot", argv[1], 10) || !ft_strncmp("julia", argv[1], 5)))
+	if (keycode == XK_Escape)
 	{
-		// INIT FRACT
-		init(&fract);
-		// RENDER TODO: MORE EFFICIENT
-		render_fractal(&fract);
-		// HOOKS
-		create_hooks(&fract);
-		// LOOP
-		mlx_loop(fract.mlx);
-	}
-	else
-	{
-		ft_putstr_fd("ERROR/INSTRUCTIONS", STDERR_FILENO); // TODO: give instructions and exits properly
-		exit(EXIT_FAILURE);
+		mlx_destroy_window(fract->mlx, fract->win);
+		mlx_destroy_display(fract->mlx);
+		free(fract->mlx);
+		exit(0); //TODO: get proper status/ check sigsegv err
 	}
 	return (0);
+}
+
+void	create_hooks(t_fract *fract)
+{
+		mlx_key_hook(fract->win, &close_win, &fract);
 }

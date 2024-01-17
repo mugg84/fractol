@@ -6,13 +6,13 @@
 #    By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 14:26:01 by mmughedd          #+#    #+#              #
-#    Updated: 2024/01/16 13:05:11 by mmughedd         ###   ########.fr        #
+#    Updated: 2024/01/17 14:07:19 by mmughedd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
 SRC = main.c
 
-UTILS = utils.c
+UTILS = utils.c hooks.c fract.c pxl.c
 
 SRC_PATH = src/
 
@@ -42,7 +42,7 @@ CC = cc
 
 FLAGS = #-Wextra -Werror -Wall
 
-MLX_FLAGS = -Lminilibx-linux/ -lmlx -L/usr/lib/X11 -lXext -lX11
+MLX_FLAGS = -Lminilibx-linux/ -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 
 RM = rm -f
 
