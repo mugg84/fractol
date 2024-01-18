@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:25:58 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/17 14:05:41 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:21:17 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -61,7 +61,7 @@ typedef struct	s_fract {
 	t_img	img;
 	double	escape_val;
 	int		iteration_def;
-
+	double	zoom;
 }	t_fract;
 
 typedef struct s_complex_num
@@ -72,7 +72,7 @@ typedef struct s_complex_num
 
 void	malloc_err(void);
 double	scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
-int	close_win(int keycode, t_fract *fract);
+int	handle_key(int keycode, t_fract *fract);
 void	create_hooks(t_fract *fract);
 t_complex_num	calc_complex(t_complex_num *z, t_complex_num *c);
 void	create_data(t_fract *fract);
@@ -80,5 +80,6 @@ void	render_fractal(t_fract *fract);
 void	init(t_fract *fract);
 void	put_pxl(int x, int y, t_img *img, int colour);
 void	handle_pxl(int x, int y, t_fract *fract);
+int	close_win(t_fract *fract);
 
 #endif

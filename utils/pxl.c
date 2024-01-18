@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:04:30 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/17 14:08:33 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/18 13:03:04 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,8 +38,8 @@ void	handle_pxl(int x, int y, t_fract *fract)
 	}
 	z->real = 0.0;
 	z->i = 0.0;
-	c->real = scale(x, -2, 2, 0, WIDTH);
-	c->i = scale(y, 2, -2, 0, HEIGHT);
+	c->real = scale(x, -2, 2, 0, WIDTH) * fract->zoom;
+	c->i = scale(y, 2, -2, 0, HEIGHT) * fract->zoom;
 	calc_complex(z, c);
 	i = -1;
 	while (++i < fract->iteration_def)
@@ -54,7 +54,7 @@ void	handle_pxl(int x, int y, t_fract *fract)
 		}
 		calc_complex(z, c);
 	}
-	put_pxl(x, y, &fract->img, WHITE);
+	put_pxl(x, y, &fract->img, ELECTRIC_PURPLE);
 	free(z);
 	free(c);
 }

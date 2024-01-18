@@ -6,7 +6,7 @@
 #    By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+         #
 #                                                 +#+#+#+#+#+   +#+            #
 #    Created: 2024/01/05 14:26:01 by mmughedd          #+#    #+#              #
-#    Updated: 2024/01/17 14:07:19 by mmughedd         ###   ########.fr        #
+#    Updated: 2024/01/18 10:36:09 by mmughedd         ###   ########.fr        #
 #                                                                              #
 # **************************************************************************** #
 
@@ -40,7 +40,7 @@ NAME = fractol
 
 CC = cc
 
-FLAGS = #-Wextra -Werror -Wall
+FLAGS = -g#-Wextra -Werror -Wall
 
 MLX_FLAGS = -Lminilibx-linux/ -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 

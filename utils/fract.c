@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:02:24 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/17 14:05:38 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/18 12:31:38 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -57,4 +57,5 @@ void	create_data(t_fract *fract)
 {
 	fract->escape_val = 4;
 	fract->iteration_def = 50;
+	fract->zoom = 1;
 }
