@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:53:53 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/18 12:56:51 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/19 12:08:56 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,6 +25,19 @@ int	handle_key(int keycode, t_fract *fract)
 {
 	if (keycode == XK_Escape)
 		close_win(fract);
+	if (keycode == XK_Up)
+		fract->move_y += 0.5;
+	else if (keycode == XK_Down)
+		fract->move_y -= 0.5;
+	else if (keycode == XK_Right)
+		fract->move_x += 0.5;
+	else if (keycode == XK_Left)
+		fract->move_x -= 0.5;
+	else if (keycode == XK_w)
+		fract->iteration_def += 10;
+	else if (keycode == XK_s && fract->iteration_def > 10)
+		fract->iteration_def -= 10;
+	render_fractal(fract);
 	return (0);
 }
 
@@ -42,5 +55,5 @@ void	create_hooks(t_fract *fract)
 {
 		mlx_key_hook(fract->win, &handle_key, fract);
 		mlx_mouse_hook(fract->win, &handle_mouse, fract);
-		mlx_hook(fract->win, 17, 0, &close_win, fract);
+		mlx_hook(fract->win, DESTROY, 0, &close_win, fract);
 }

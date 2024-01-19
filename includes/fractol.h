@@ -6,15 +6,18 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:25:58 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/18 12:21:17 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/19 11:55:45 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #ifndef FRACTOL_H
 # define FRACTOL_H
+
 # define MALLOC_ERROR	1
-# define WIDTH			800
-# define HEIGHT			800
+# define WIDTH			1000
+# define HEIGHT			1000
+# define DESTROY		17
+# define ITERATIONS		20
 //colours
 # define BLACK    0x000000
 # define WHITE    0xFFFFFF
@@ -62,6 +65,8 @@ typedef struct	s_fract {
 	double	escape_val;
 	int		iteration_def;
 	double	zoom;
+	double	move_x;
+	double	move_y;
 }	t_fract;
 
 typedef struct s_complex_num
