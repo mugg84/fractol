@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:02:24 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/19 11:56:05 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:29:47 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,7 +16,7 @@ void	init(t_fract *fract)
 {
 	fract->mlx = mlx_init();
 	if (fract->mlx == NULL)
-		return ; //TODO: function to free
+		malloc_err();
 	fract->win = mlx_new_window(fract->mlx, WIDTH, HEIGHT, "FRACT-OL");
 	if (!fract->win)
 	{
@@ -57,7 +57,7 @@ void	create_data(t_fract *fract)
 {
 	fract->escape_val = 4;
 	fract->iteration_def = ITERATIONS;
-	fract->zoom = 1;
-	fract->move_x = 0;
-	fract->move_y = 0;
+	fract->zoom = 1.0;
+	fract->move_x = 0.0;
+	fract->move_y = 0.0;
 }

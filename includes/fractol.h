@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/05 14:25:58 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/19 11:55:45 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:28:33 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,10 +14,10 @@
 # define FRACTOL_H
 
 # define MALLOC_ERROR	1
-# define WIDTH			1000
-# define HEIGHT			1000
+# define WIDTH			600
+# define HEIGHT			600
 # define DESTROY		17
-# define ITERATIONS		20
+# define ITERATIONS		10
 //colours
 # define BLACK    0x000000
 # define WHITE    0xFFFFFF
@@ -79,7 +79,7 @@ void	malloc_err(void);
 double	scale(double unscaled_num, double new_min, double new_max, double old_min, double old_max);
 int	handle_key(int keycode, t_fract *fract);
 void	create_hooks(t_fract *fract);
-t_complex_num	calc_complex(t_complex_num *z, t_complex_num *c);
+void	calc_complex(t_complex_num *z, t_complex_num *c);
 void	create_data(t_fract *fract);
 void	render_fractal(t_fract *fract);
 void	init(t_fract *fract);

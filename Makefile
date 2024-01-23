@@ -40,7 +40,7 @@ NAME = fractol
 
 CC = cc
 
-FLAGS = -g#-Wextra -Werror -Wall
+FLAGS = -g -pg#-Wextra -Werror -Wall
 
 MLX_FLAGS = -Lminilibx-linux/ -lmlx -L/usr/lib/X11 -lXext -lX11 -lm
 

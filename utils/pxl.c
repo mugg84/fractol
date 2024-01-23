@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 14:04:30 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/19 11:49:20 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/23 13:23:41 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -38,13 +38,15 @@ void	handle_pxl(int x, int y, t_fract *fract)
 	}
 	z->real = 0.0;
 	z->i = 0.0;
-	c->real = (scale(x, -2, 2, 0, WIDTH) + fract->move_x) * fract->zoom;
-	c->i = (scale(y, 2, -2, 0, HEIGHT) + fract->move_y) * fract->zoom;
+	// c->real = (scale(x, -2, 2, 0, WIDTH) + fract->move_x) * fract->zoom;
+	// c->i = (scale(y, 2, -2, 0, HEIGHT) + fract->move_y) * fract->zoom;
+	c->real = (scale(x, -2, 2, 0, WIDTH) * fract->zoom) + fract->move_x;
+	c->i = (scale(y, 2, -2, 0, HEIGHT) * fract->zoom) + fract->move_y;
 	calc_complex(z, c);
 	i = -1;
 	while (++i < fract->iteration_def)
 	{
-		if (pow(z->real, 2) + pow(z->i, 2) > fract->escape_val)
+		if ((z->real * z->real) + (z->i * z->i) > fract->escape_val)
 		{
 			colour = scale(i, BLACK, WHITE, 0, fract->iteration_def);
 			put_pxl(x, y, &fract->img, colour);

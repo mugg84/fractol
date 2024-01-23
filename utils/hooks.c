@@ -6,7 +6,7 @@
 /*   By: mmughedd <mmughedd@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2024/01/17 13:53:53 by mmughedd          #+#    #+#             */
-/*   Updated: 2024/01/19 12:08:56 by mmughedd         ###   ########.fr       */
+/*   Updated: 2024/01/20 14:31:44 by mmughedd         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -16,6 +16,7 @@ int	close_win(t_fract *fract)
 {
 	mlx_destroy_image(fract->mlx, fract->img.img);
 	mlx_destroy_window(fract->mlx, fract->win);
+	mlx_destroy_display(fract->mlx);
 	free(fract->mlx);
 	exit(EXIT_SUCCESS);
 	return (0);
@@ -26,17 +27,17 @@ int	handle_key(int keycode, t_fract *fract)
 	if (keycode == XK_Escape)
 		close_win(fract);
 	if (keycode == XK_Up)
-		fract->move_y += 0.5;
+		fract->move_y += (0.5 * fract->zoom);
 	else if (keycode == XK_Down)
-		fract->move_y -= 0.5;
+		fract->move_y -= (0.5 * fract->zoom);
 	else if (keycode == XK_Right)
-		fract->move_x += 0.5;
+		fract->move_x += (0.5 * fract->zoom);
 	else if (keycode == XK_Left)
-		fract->move_x -= 0.5;
+		fract->move_x -= (0.5 * fract->zoom);
 	else if (keycode == XK_w)
-		fract->iteration_def += 10;
-	else if (keycode == XK_s && fract->iteration_def > 10)
-		fract->iteration_def -= 10;
+		fract->iteration_def += 5;
+	else if (keycode == XK_s && fract->iteration_def > 10 )
+		fract->iteration_def -= 5;
 	render_fractal(fract);
 	return (0);
 }
